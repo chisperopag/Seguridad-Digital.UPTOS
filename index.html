@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Seguridad Digital El Chispero | UPTOS Clodosbaldo Russián</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght=300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+:root{
+    --azul-primario:#5b84b1;
+    --azul-hover:#3e6d9c;
+    --azul-oscuro:#1d3557;
+    --azul-claro:#eef5fb;
+    --gris-fondo:#f5f7fa;
+    --gris-texto:#222;
+    --gris-secundario:#5f6368;
+    --blanco:#ffffff;
+    --rojo:#d9534f;
+    --verde:#28a745;
+    --sombra:0 8px 22px rgba(0,0,0,0.08);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Roboto',sans-serif;
+}
+
+body{
+    background:var(--gris-fondo);
+    color:var(--gris-texto);
+    line-height:1.8;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    background:var(--blanco);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 6%;
+    position:sticky;
+    top:0;
+    z-index:3000;
+    border-bottom:1px solid #ddd;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo-institucion{
+    height:55px;
+    width:auto;
+}
+
+.logo-text h1{
+    font-size:1.3rem;
+    color:#111;
+    font-weight:900;
+}
+
+.logo-text p{
+    font-size:0.75rem;
+    color:#666;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#222;
+    font-weight:700;
+    transition:0.3s;
+    font-size:0.95rem;
+}
+
+.nav-links a:hover{
+    color:var(--azul-hover);
+}
+
+.menu-btn{
+    display:none;
+    font-size:1.7rem;
+    cursor:pointer;
+}
+
+/* CARRUSEL */
+
+.carousel{
+    position:relative;
+    height:380px;
+    overflow:hidden;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity 1s ease-in-out;
+    background-size:cover;
+    background-position:center;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.slide-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(rgba(255,255,255,0.68),rgba(255,255,255,0.82));
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+}
+
+.slide-text h1{
+    font-size:clamp(2rem,4vw,3.5rem);
+    color:#111;
+    margin-bottom:18px;
+    font-weight:900;
+}
+
+.slide-text p{
+    font-size:1.15rem;
+    max-width:850px;
+    margin:auto;
+    color:#333;
+}
+
+/* SECCIONES */
+
+section{
+    padding:70px 8%;
+}
+
+.seccion-dinamica{
+    display:none;
+    animation:fade .5s ease;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.6rem;
+    margin-bottom:55px;
+    font-weight:900;
+    color:#111;
+    position:relative;
+}
+
+.section-title::after{
+    content:'';
+    width:80px;
+    height:4px;
+    background:var(--azul-primario);
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:-15px;
+    border-radius:20px;
+}
+
+/* COMUNIDAD */
+
+.history-box{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:35px;
+}
+
+.history-text p{
+    font-size:1.08rem;
+    margin-bottom:20px;
+    text-align:justify;
+}
+
+.limits-list{
+    list-style:none;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:var(--sombra);
+    margin-top:25px;
+}
+
+.limits-list li{
+    margin-bottom:12px;
+}
+
+.map-container{
+    overflow:hidden;
+    border-radius:22px;
+    box-shadow:var(--sombra);
+}
+
+/* FRAUDES - FORMATO FLUIDO REESTRUCTURADO */
+
+.fraud-fluid-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.fraud-block {
+    margin-bottom: 70px;
+    text-align: justify;
+}
+
+.fraud-block h3 {
+    font-size: 1.9rem;
+    color: var(--azul-oscuro);
+    margin-bottom: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid var(--azul-primario);
+    padding-bottom: 8px;
+}
+
+.fraud-block p {
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    color: #222;
+    line-height: 1.9;
+}
+
+/* Muestras Visuales Didácticas de Fraude */
+.fraud-sample-img {
+    width: 100%;
+    max-width: 550px;
+    display: block;
+    margin: 25px auto;
+    border-radius: 15px;
+    border: 3px dashed var(--azul-primario);
+    box-shadow: var(--sombra);
+    transition: transform 0.3s ease;
+}
+
+.fraud-sample-img:hover {
+    transform: scale(1.02);
+}
+
+.action-badge {
+    background: var(--azul-oscuro);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.fraud-block ul {
+    font-size: 1.12rem;
+    padding-left: 25px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.fraud-block ul li {
+    margin-bottom: 12px;
+}
+
+/* TESTIMONIOS CON MOVIMIENTO */
+
+.testimonios-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.test-card{
+    background:white;
+    padding:35px;
+    border-radius:22px;
+    position:relative;
+    box-shadow:var(--sombra);
+    transition:0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.test-card:hover{
+    transform:translateY(-10px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.06);
+}
+
+.test-card img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:20px;
+}
+
+.quote-icon{
+    position:absolute;
+    top:20px;
+    right:20px;
+    color:#d8e3ff;
+    font-size:2rem;
+}
+
+.test-card p{
+    font-size:1.05rem;
+}
+
+/* FOOTER */
+
+footer{
+    background:#edf3f9;
+    color:#222;
+    padding:70px 8% 30px;
+    position:relative;
+    overflow:hidden;
+}
+
+.footer-logo-difuminado{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:430px;
+    opacity:0.06;
+    filter:grayscale(100%);
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    position:relative;
+    z-index:2;
+}
+
+.footer-grid h3{
+    font-size:1.8rem;
+    margin-bottom:18px;
+}
+
+.team-list{
+    list-style:none;
+    margin-top:20px;
+}
+
+.team-list li{
+    margin-bottom:12px;
+}
+
+.btn-ws{
+    background:var(--verde);
+    color:white;
+    text-decoration:none;
+    padding:16px 30px;
+    border-radius:50px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:20px;
+    font-weight:700;
+    transition:0.3s;
+    box-shadow:var(--sombra);
+}
+
+.btn-ws:hover{
+    transform:scale(1.05);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        flex-direction:column;
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        background:white;
+        padding:20px;
+        text-align:center;
+        border-top:1px solid #ddd;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .carousel{
+        height:260px;
+    }
+
+    .slide-text h1{
+        font-size:2rem;
+    }
+
+    .slide-text p{
+        font-size:1rem;
+    }
+
+    section{
+        padding:55px 5%;
+    }
+
+    .history-box,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        text-align:center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo-area">
+
+<img src="logo-uptos.gif" class="logo-institucion">
+
+<div class="logo-text">
+<h1>EL CHISPERO</h1>
+<p>SEGURIDAD DIGITAL</p>
+</div>
+
+</div>
+
+<i class="fas fa-bars menu-btn" onclick="toggleMenu()"></i>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="javascript:void(0)" onclick="mostrarSeccion('inicio_contenido')">Inicio</a></li>
+
+<li><a href="javascript:void(0)" onclick="mostrarSeccion('historia')">Comunidad</a></li>
+
+<li><a href="javascript:void(0)" onclick="mostrarSeccion('fraudes')">Fraudes</a></li>
+
+<li><a href="javascript:void(0)" onclick="mostrarSeccion('testimonios')">Testimonios</a></li>
+
+</ul>
+
+</nav>
+
+<header class="carousel">
+
+<div class="slide active"
+style="background-image:url('https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200')">
+
+<div class="slide-overlay">
+
+<div class="slide-text">
+
+<h1>Protegiendo a comunidades</h1>
+
+<p>
+Proyecto de una página web informativa para la prevención de fraudes virtuales en la comunidad 
+El Chispero
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="slide"
+style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200')">
+
+<div class="slide-overlay">
+
+<div class="slide-text">
+
+<h1>UPTOS "Clodosbaldo Russián"</h1>
+
+<p>
+Estudiantes de informática al servicio para la seguridad de nuestras comunidades
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<section id="inicio_contenido" class="seccion-dinamica">
+
+    <div class="container">
+
+        <h2 class="section-title">Seguridad Digital</h2>
+
+        <div style="max-width: 950px; margin: auto;">
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                En el transcurso de los últimos años, el mundo ha experimentado una transformación radical en la forma en que nos comunicamos, trabajamos y gestionamos nuestro día a día. El uso de teléfonos inteligentes y computadoras ha dejado de ser un lujo o un pasatiempo para convertirse en una necesidad tan básica como portar la cédula de identidad. Hoy, desde la comodidad de nuestros hogares o caminando por la comunidad, revisamos las cuentas del banco, nos mantenemos en contacto con los familiares que están lejos, leemos noticias, coordinamos comercios locales y gestionamos los beneficios del Estado como el Sistema Patria. La tecnología, sin duda alguna, representa una ventana gigantesca hacia el progreso y la comodidad.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                Sin embargo, este crecimiento acelerado ha dejado una brecha preocupante: la <b>falta de alfabetización digital</b>. Muchas personas se vieron obligadas a adoptar estas herramientas de la noche a la mañana sin recibir una guía o preparación previa. Es completamente normal sentir miedo, desconfianza o frustración ante un entorno virtual que cambia constantemente. Los estudiantes de Informática de la <b>Universidad Politécnica Territorial del Oeste de Sucre “Clodosbaldo Russián”</b> entendemos que la tecnología debe incluir a todos, no excluir.
+            </p>
+
+            <img src="foto.webp"
+            style="
+            width:75%;
+            max-width:680px;
+            display:block;
+            margin:40px auto;
+            border-radius:20px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.08);
+            ">
+
+            <h3 style="font-size:2rem; color:#1d3557; margin-top:45px; margin-bottom:20px; font-weight:700;">
+                ¿Qué es la seguridad digital?
+            </h3>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                Para comprender la seguridad digital no hace falta estudiar manuales complejos de ingeniería ni memorizar códigos extraños. La forma más sencilla de verlo es haciendo una comparación con nuestra propia vida cotidiana. Imagine por un momento que su teléfono celular o su computadora es su casa física. Dentro de esa casa usted no guarda escombros; guarda lo más valioso que posee: sus fotos familiares, sus recuerdos íntimos, sus conversaciones privadas, los frutos de su trabajo financiero y sus datos de identidad.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                En el mundo real, nadie dejaría la puerta de su casa abierta de par en par a medianoche, ni le entregaría una copia de la llave al primer desconocido que pasa por la calle prometiendo limpiar el jardín gratis. De la misma manera, en el entorno de internet, la <b>seguridad digital</b> es el conjunto de hábitos, decisiones y pequeñas acciones que aplicamos para colocarle un "candado seguro" a nuestra información. Los delincuentes en el espacio virtual no utilizan la fuerza física para romper una ventana; se valen de la manipulación, el engaño y el descuido para lograr que sea el propio usuario quien les abra la puerta trasera de sus cuentas. Por lo tanto, la seguridad no depende de un sistema costoso, sino de desarrollar la malicia necesaria para detectar cuándo nos están intentando engañar.
+            </p>
+
+            <h3 style="font-size:2rem; color:#1d3557; margin-top:45px; margin-bottom:20px; font-weight:700;">
+                Los tres pilares que cuidan tu información
+            </h3>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                Aunque en la informática se utilicen términos muy avanzados, toda la seguridad digital se sostiene sobre tres reglas fundamentales que buscan proteger al ciudadano, explicadas aquí de la manera más sencilla posible:
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:15px; line-height: 1.9; padding-left: 10px;">
+                • <b>La privacidad (Confidencialidad):</b> Consiste en garantizar que tus cosas sigan siendo tuyas y de nadie más. Significa que tus mensajes de WhatsApp, tus saldos bancarios y tus fotos personales solo los puedas ver tú y las personas a quienes tú decidas mostrárselos. Los candados digitales evitan que ojos extraños husmeen en tu vida íntima.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:15px; line-height: 1.9; padding-left: 10px;">
+                • <b>La autenticidad (Integridad):</b> Este pilar asegura que nadie pueda meter la mano en tus datos para alterarlos sin tu permiso. Por ejemplo, si tú tienes un dinero guardado o envías un mensaje a un hijo, este sistema garantiza que ningún tercero pueda modificar el monto de tu cuenta o cambiar las palabras de tu mensaje a mitad de camino para perjudicarte.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9; padding-left: 10px;">
+                • <b>El acceso libre (Disponibilidad):</b> Significa que tus herramientas tecnológicas deben estar listas para cuando tú las necesites. De nada sirve tener una cuenta si al momento de una emergencia médica o comercial el sistema está bloqueado o un atacante cambió tu clave dejándote por fuera. La seguridad busca que tú mantengas el control total de tus accesos en cualquier momento del día.
+            </p>
+
+            <img src="foto1.jpg"
+            style="
+            width:75%;
+            max-width:680px;
+            display:block;
+            margin:40px auto;
+            border-radius:20px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.08);
+            ">
+
+            <h3 style="font-size:2rem; color:#1d3557; margin-top:45px; margin-bottom:20px; font-weight:700;">
+                La psicología del engaño: ¿Por qué caemos en las trampas?
+            </h3>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                Existe la falsa creencia de que para ser víctima de un ataque informático es necesario que un genio de las computadoras intervenga nuestros equipos con programas espías de películas. En la realidad comunitaria, el panorama es completamente distinto. El método más utilizado por los delincuentes se conoce técnicamente como "Ingeniería Social"</b>.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                Los estafadores estudian las emociones humanas y las usan en nuestra contra. Saben perfectamente que si nos atacan usando términos técnicos nos vamos a asustar, pero si usan el nombre de una institución conocida o apelan a nuestros sentimientos, bajaremos la guardia. Generalmente operan bajo tres detonantes emocionales específicos:
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:15px; line-height: 1.9; padding-left: 10px;">
+                <b>A) El sentido de urgencia extrema:</b> El mensaje siempre te exigirá actuar "ya mismo". Te dirán frases como: <i>"Su cuenta será bloqueada en 10 minutos si no ingresa al enlace"</i> o <i>"Su familiar tuvo un accidente y necesitamos el dinero de inmediato"</i>. Crean esta presión para bloquear tu capacidad de pensar con calma y obligarte a cometer el error por puro pánico.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:15px; line-height: 1.9; padding-left: 10px;">
+                <b>B) La falsa autoridad o confianza:</b> Se hacen pasar por entes gubernamentales, coordinadores de misiones, empleados del banco o incluso usan el nombre de pila de algún vecino ("Hola, soy María"). Copian los logotipos, los colores y las maneras de hablar de estas entidades para que tus ojos crean que estás viendo una pantalla legítima cuando en realidad es una copia falsa diseñada para capturar tus contraseñas o datos importantes.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9; padding-left: 10px;">
+                <b>C) La ambición o necesidad:</b> Promesas de premios caídos del cielo, bonos extraordinarios no anunciados en canales oficiales o sorteos de teléfonos de última generación por solo responder una encuesta.
+            </p>
+
+            <h3 style="font-size:2rem; color:#1d3557; margin-top:45px; margin-bottom:20px; font-weight:700;">
+                4. Las reglas de oro para blindar tus dispositivos
+            </h3>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                Para caminar con total tranquilidad por el entorno digital, no necesitas memorizar conceptos difíciles; solo debes incorporar estas tres prácticas de prevención en tu rutina diaria con el teléfono:
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:15px; line-height: 1.9;">
+                <b>Primera: El candado de las contraseñas y el doble paso</b><br>
+                Usar contraseñas como tu fecha de nacimiento, el nombre de tu mascota o secuencias lógicas como "123456" es equivalente a dejar la llave pegada en la cerradura por fuera. Una buena contraseña debe ser fácil de recordar para ti pero imposible de adivinar para otros, mezclando letras y números. Pero el secreto mejor guardado de los informáticos es activar la <b>Verificación en Dos Pasos (2FA)</b> en aplicaciones como WhatsApp y Facebook. Esta función actúa como un cerrojo extra: incluso si un delincuente averigua tu clave principal, el teléfono le pedirá un código secreto que solo te llegará a ti por mensaje de texto, impidiéndole la entrada por completo.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:15px; line-height: 1.9;">
+                <b>Segunda: Los códigos por mensaje de texto son de uso exclusivo</b><br>
+                Los códigos numéricos temporales que llegan a tu celular vía SMS son personales e intransferibles. Absolutamente ningún operador de Movilnet, Movistar o Digitel, ningún médico programando citas de salud, ni ningún funcionario bancario te llamará para pedirte que le dictes esos números. Si alguien te solicita un código bajo cualquier excusa, por más amable o convincente que suene, cuelga la llamada inmediatamente; están intentando robar tu cuenta.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                <b>Tercera: El hábito de la desconfianza saludable y los respaldos</b><br>
+                No abras enlaces que te envíen por grupos de WhatsApp, aunque vengan de un amigo cercano (muchas veces los reenvían sin saber que son falsos). Si necesitas entrar a tu banco, escribe tú mismo el nombre de la página directamente en el navegador de internet. Asimismo, acostúmbrate a guardar tus fotos y contactos importantes en un cuaderno o respaldados fuera del teléfono. Si tu equipo llega a fallar, se extravía o sufre un ataque de virus, tener un respaldo oportuno anula por completo el poder de cualquier imprevisto.
+            </p>
+
+            <img src="foto3.jpg"
+            style="
+            width:75%;
+            max-width:680px;
+            display:block;
+            margin:40px auto;
+            border-radius:20px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.08);
+            ">
+
+            <h3 style="font-size:2rem; color:#1d3557; margin-top:45px; margin-bottom:20px; font-weight:700;">
+                5. Protocolo de emergencia: ¿Cómo actuar ante un incidente?
+            </h3>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                Errar es de humanos y los delincuentes virtuales pasan el día entero perfeccionando sus tácticas para hacernos caer. Si en un momento de descuido presionaste un enlace sospechoso, diste un dato que no debías o sientes que perdiste el control de alguna de tus cuentas, lo peor que puedes hacer es dejarte congelar por el pánico o aislarte por vergüenza. En la seguridad informática el tiempo vale oro, y reaccionar con rapidez marca la diferencia entre un susto pasajero y una pérdida lamentable. Sigue de inmediato estos pasos consecutivos:
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:15px; line-height: 1.9; padding-left: 15px;">
+                <b>1. Corta la cadena informando a tu entorno:</b> Si notas que perdiste el acceso a tu WhatsApp, Facebook o Instagram, utiliza el teléfono de un vecino, un familiar o haz una llamada directa para avisar a tus contactos clave. Infórmales que tu cuenta fue comprometida para que ignoren cualquier solicitud de dinero, transferencias, venta de divisas o favores urgentes que los delincuentes empiecen a realizar utilizando tu nombre y tu fotografía.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:15px; line-height: 1.9; padding-left: 15px;">
+                <b>2. Notifica y bloquea tus canales bancarios:</b> Comunícate de inmediato con las líneas telefónicas de atención de tus bancos o ingresa desde un dispositivo seguro para gestionar el bloqueo temporal de tus tarjetas, transferencias y accesos digitales. Detener el flujo monetario a tiempo neutraliza el principal beneficio económico que busca el atacante.
+            </p>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9; padding-left: 15px;">
+                <b>3. Recopila evidencias y apóyate en tu comunidad:</b> Toma capturas de pantalla de los números telefónicos atacantes, los mensajes recibidos y las páginas falsas; estos registros sirven como constancia legal. No pases el proceso a solas; acude a personas de confianza dentro del sector, jóvenes con facilidad tecnológica o contacta directamente al equipo técnico de soporte de este proyecto universitario mediante los canales dispuestos al final de la página. El conocimiento compartido es la barrera más sólida contra el crimen digital.
+            </p>
+
+            <div style="border-top: 2px solid #1d3557; width: 100%; margin: 40px 0;"></div>
+
+            <p style="font-size:1.15rem; text-align:justify; margin-bottom:25px; line-height: 1.9;">
+                Navegar por internet hoy en día no debe ser motivo de angustia ni un terreno exclusivo para especialistas o jóvenes. Es un espacio público nuevo que nos pertenece a todos. Al incorporar estos principios sencillos de prevención y solidaridad vecinal, transformamos el miedo en respeto y la vulnerabilidad en fortaleza ciudadana. La verdadera ciberseguridad empieza por la educación, y el conocimiento es el único mapa confiable para transitar la era digital con absoluta paz mental.
+            </p>
+
+            <img src="foto6.png"
+            style="
+            width:75%;
+            max-width:680px;
+            display:block;
+            margin:40px auto;
+            border-radius:20px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.08);
+            ">
+
+            <div style="text-align: center; margin-top: 50px; padding: 25px; border-top: 1px solid #1d3557;">
+                <p style="font-size: 1.3rem; font-weight: 700; color: #1d3557; font-style: italic; line-height: 1.6;">
+                    "La seguridad digital no es un destino al que se llega, es un camino diario de aprendizaje donde el conocimiento de cada vecino protege a toda la comunidad."
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section id="historia" class="seccion-dinamica">
+
+<div class="container">
+
+<h2 class="section-title">Nuestra Comunidad: El Chispero</h2>
+
+<div class="history-box">
+
+<div class="history-text">
+
+<p>
+Fundada alrededor de 1977, nuestra comunidad nació del anhelo de familias venezolanas por un hogar propio en zonas cercanas a INIA y CAIP. Liderados por <b>Luisa Rodríguez, Amalia de la Cruz y Jesús Mudarra</b>, los primeros habitantes construyeron estructuras modestas que, con solidaridad, se transformaron en lo que hoy es 
+<b>"El Chispero"</b>.
+</p>
+
+<p>
+Ubicada en la parroquia Valentín Valiente del Estado Sucre, goza de una posición privilegiada frente al Mar Caribe.
+</p>
+
+<ul class="limits-list">
+
+<li><strong>Norte:</strong> Mar Caribe</li>
+<li><strong>Sur:</strong> Cerro Pan de Azúcar</li>
+<li><strong>Este:</strong> Comunidad El Pozo</li>
+<li><strong>Oeste:</strong> Comunidad Virgen del Valle</li>
+
+</ul>
+
+</div>
+
+<div class="map-container">
+
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1160.9287043663146!2d-64.14049939831945!3d10.471956459744812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c326f00003b172d%3A0x7f1fa200016df002!2sCancha%20el%20Chispero!5e1!3m2!1ses-419!2sus!4v1770335842793!5m2!1ses-419!2sus"
+width="100%"
+height="400"
+style="border:0;"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="fraudes" class="seccion-dinamica">
+    <div class="container">
+        <h2 class="section-title">Análisis de Fraudes Virtuales</h2>
+
+        <div class="fraud-fluid-container">
+
+            <div class="fraud-block">
+                <h3><i class="fab fa-whatsapp"></i> Suplantación de Identidad</h3>
+                <p>Ocurre cuando personas desconocidas se comunican a través de un número telefónico nuevo empleando un saludo genérico como "Hola, soy María" o "Hola, cambié de número". Buscan ganarse la confianza de la víctima simulando ser un familiar directo en una situación apremiante para solicitar transferencias urgentes bajo el argumento de accidentes sobrevenidos, problemas de salud o la liquidación de divisas por un apuro económico.</p>
+                
+                <div class="action-badge"><i class="fas fa-shield-alt"></i> ¿Cómo actuar ante esta situación?</div>
+                <ul>
+                    <li>Realizar de forma inmediata una llamada telefónica convencional o directa al número habitual del familiar para verificar si realmente modificó sus datos de contacto.</li>
+                    <li>Plantear una pregunta clave o recordar un evento familiar íntimo cuyo conocimiento esté restringido únicamente a la persona verdadera antes de gestionar transacciones.</li>
+                    <li>Evitar de manera absoluta el envío de fondos monetarios o capturas de operaciones basándose únicamente en mensajes de texto o registros de chat interactivos.</li>
+                </ul>
+            </div>
+
+            <div class="fraud-block">
+                <h3><i class="fas fa-university"></i> Phishing Bancario</h3>
+                <p>Consiste en la recepción de mensajería escrita o correos electrónicos alarmantes que falsifican los logotipos y el vocabulario técnico de entidades financieras de Venezuela. Estos avisos aseguran que el usuario presenta un "bloqueo preventivo en sus cuentas" o requiere una "actualización obligatoria de datos" para inducir a la persona a ingresar a enlaces alterados que copian visualmente la banca en línea legítima y capturar contraseñas y tarjetas de coordenadas.</p>
+                
+                <div class="action-badge"><i class="fas fa-shield-alt"></i> ¿Cómo actuar ante esta situación?</div>
+                <ul>
+                    <li>Digitar de forma manual la dirección url oficial de la entidad bancaria en la barra superior del navegador web, descartando los enlaces directos adjuntos en mensajes recibidos.</li>
+                    <li>Recordar de manera constante que las instituciones financieras no solicitan claves secretas, combinaciones de coordenadas ni códigos de validación temporal mediante llamadas o mensajería de texto.</li>
+                    <li>Notificar de inmediato a los canales oficiales de atención del banco en caso de haber completado formularios sospechosos para tramitar el bloqueo oportuno del usuario digital.</li>
+                </ul>
+            </div>
+
+            <div class="fraud-block">
+                <h3><i class="fas fa-money-check-alt"></i> Falsos Pagos Móviles</h3>
+                <p>Este engaño perjudica directamente a pequeños comerciantes y emprendedores comunitarios durante transacciones presenciales. El comprador simula la ejecución de un pago en línea y presenta una captura de pantalla en su teléfono celular que muestra un diseño idéntico al comprobante oficial del banco emisor, habiendo modificado digitalmente los campos de nombre, monto monetario, fecha de operación y número de referencia referencial.</p>
+
+                <div class="action-badge"><i class="fas fa-shield-alt"></i> ¿Cómo actuar ante esta situación?</div>
+                <ul>
+                    <li>Validar la recepción efectiva de los fondos monetarios ingresando de manera interna a la aplicación bancaria personal o revisando el balance consolidado del comercio.</li>
+                    <li>No concretar la entrega física de bienes, productos o mercancías guiándose exclusivamente por las imágenes digitales aportadas por el comprador externo.</li>
+                    <li>Habilitar alertas de mensajería de texto automatizadas en el dispositivo telefónico asociado para constatar los movimientos comerciales de abono al instante.</li>
+                </ul>
+            </div>
+
+            <div class="fraud-block">
+                <h3><i class="fas fa-qrcode"></i> QRishing</h3>
+                <p>Representa una modalidad de estafa donde delincuentes informáticos intervienen códigos QR ubicados físicamente en mostradores, afiches públicos o puntos de recaudación de alto tráfico en las localidades. Al superponer calcomanías falsas sobre el código auténtico del negocio, redirigen los teléfonos de los usuarios hacia portales clonados destinados a la sustracción de datos personales o a la descarga oculta de software perjudicial.</p>
+                
+                <div class="action-badge"><i class="fas fa-shield-alt"></i> ¿Cómo actuar ante esta situación?</div>
+                <ul>
+                    <li>Efectuar una revisión táctil y visual del código impreso para cerciorarse de que no existan pegatinas superpuestas o enmiendas físicas sobre la superficie original de exhibición.</li>
+                    <li>Utilizar herramientas de escaneo digital que brinden una vista previa del enlace web destino antes de proceder con el direccionamiento automático del explorador de internet.</li>
+                    <li>Constatar minuciosamente que la dirección del portal cargado posea el candado de seguridad digital HTTPS y corresponda al nombre exacto de la empresa proveedora.</li>
+                </ul>
+            </div>
+
+            <div class="fraud-block">
+                <h3><i class="fab fa-whatsapp-square"></i> Robo de WhatsApp</h3>
+                <p>Se ejecuta mediante técnicas de persuasion psicológica donde el estafador contacta telefónicamente a la víctima haciéndose pasar por operadores de salud pública, encuestadores estatales o asistentes técnicos de telefonía. Con el pretexto de tramitar asignaciones o citas, solicitan al ciudadano que les provea un código numérico recibido simultáneamente por SMS, el cual es en realidad el pin oficial de validación para mudar la línea a otro terminal.</p>
+                
+                <div class="action-badge"><i class="fas fa-shield-alt"></i> ¿Cómo actuar ante esta situación?</div>
+                <ul>
+                    <li>Establecer de forma obligatoria el mecanismo de verificación en dos pasos agregando un pin secreto de seis dígitos dentro de la configuración interna de la aplicación de mensajería.</li>
+                    <li>Mantener bajo reserva absoluta cualquier tipo de numeración de autenticación recibida por canales de mensajería convencional, evitando compartirla con terceros bajo ningún concepto.</li>
+                    <li>Ejecutar de inmediato el proceso de reinstalación de la aplicación en caso de pérdida de servicio para forzar el cierre automático de conexiones externas no autorizadas.</li>
+                </ul>
+            </div>
+
+            <div class="fraud-block">
+                <h3><i class="fas fa-store"></i> Marketplace de Riesgo</h3>
+                <p>Los atacantes publican ofertas muy atractivas de vehículos particulares, motocicletas o equipos tecnológicos a costos significativamente menores en comparación con los valores comerciales habituales. Una vez que captan el interés de los compradores locales, coordinan un encuentro físico para cerrar la transacción comercial en locaciones remotas o barrios de difícil acceso con la finalidad de perpetrar un asalto material.</p>
+                
+                <div class="action-badge"><i class="fas fa-shield-alt"></i> ¿Cómo actuar ante esta situación?</div>
+                <ul>
+                    <li>Pautar las reuniones de negociación e intercambio de manera estricta dentro de zonas de seguridad perimetral, tales como comandos policiales o recintos bancarios de gran afluencia.</li>
+                    <li>Sospechar inmediatamente de aquellos anuncios que expongan valores de venta llamativamente reducidos o facilidades de pago desproporcionadas respecto al mercado nacional.</li>
+                    <li>Evitar acudir de manera individual a los encuentros comerciales programados y prescindir de la movilización presencial de sumas elevadas de dinero en efectivo.</li>
+                </ul>
+            </div>
+
+            <div class="fraud-block">
+                <h3><i class="fas fa-chart-line"></i> Estafas P2P (Binance/Zelle)</h3>
+                <p>Involucra un mecanismo técnico de triangulación financiera ejecutado en plataformas de intercambio de criptoactivos o monedas extranjeras. El estafador adquiere divisas digitales y realiza la transferencia bancaria correspondiente utilizando cuentas corporativas o cuentas de particulares previamente intervenidas ilícitamente, lo que origina posteriores investigaciones criminales y congelamientos de capitales para el vendedor de buena fe.</p>
+                
+                <div class="action-badge"><i class="fas fa-shield-alt"></i> ¿Cómo actuar ante esta situación?</div>
+                <ul>
+                    <li>Comprobar de forma rigurosa que el nombre legal impreso en el registro de la cuenta bancaria de origen coincida con la identidad del perfil verificado en la plataforma de intercambio.</li>
+                    <li>Retener la liberación de los activos virtuales negociados hasta constatar que el capital se encuentra plenamente consolidado en el balance personal de la cuenta receptora.</li>
+                    <li>Rechazar la mediación de transacciones con intermediarios ajenos al contrato o que utilicen cuentas de depósitos de procedencia no identificada.</li>
+                </ul>
+            </div>
+
+            <div class="fraud-block">
+                <h3><i class="fas fa-gift"></i> Bonos y Ayudas Falsas</h3>
+                <p>Se manifiesta a través del envío recurrente de mensajes masivos en comunidades de mensajería con textos que prometen bonificaciones extraordinarias del Sistema Patria, subsidios de alimentación o aniversarios de marcas reconocidas. Estos enlaces externos dirigen a formularios interactivos que solicitan nombres de usuario, cédulas de identidad y contraseñas telefónicas con el propósito latente de desvalijar perfiles estatales asignados.</p>
+                
+                <div class="action-badge"><i class="fas fa-shield-alt"></i> ¿Cómo actuar ante esta situación?</div>
+                <ul>
+                    <li>Efectuar revisiones informativas exclusivamente mediante las direcciones y cuentas institucionales validadas de los organismos del Estado.</li>
+                    <li>Recordar que las adjudicaciones sociales se administran directamente desde la sesión interna del monedero del Sistema Patria y nunca demandan activaciones por links complementarios.</li>
+                    <li>Detener la divulgación vecinal de informaciones no comprobadas eliminando las cadenas de mensajes que promuevan ofertas económicas extraordinarias.</li>
+                </ul>
+            </div>
+
+            <div class="fraud-block">
+                <h3><i class="fas fa-briefcase"></i> Ofertas de Empleo Falsas</h3>
+                <p>Consiste en convocatorias laborales a distancia orientadas a personas en búsqueda de ingresos estables, ofreciendo salarios elevados denominados en moneda extranjera a cambio de ejecutar actividades sencillas como reproducir contenidos de video o interactuar en redes. Posteriormente, condicionan el inicio laboral al desembolso de un depósito inicial administrativo o a la instalación de programas informáticos que capturan datos confidenciales.</p>
+                
+                <div class="action-badge"><i class="fas fa-shield-alt"></i> ¿Cómo actuar ante esta situación?</div>
+                <ul>
+                    <li>Realizar auditorías de identidad digital buscando referencias comerciales, ubicaciones operativas y valoraciones en la red sobre la organización contratante.</li>
+                    <li>Descartar de manera inmediata cualquier postulación laboral que le exija al aspirante la entrega previa de dinero por concepto de herramientas de trabajo o inducciones técnicas.</li>
+                    <li>Limitar las instalaciones de aplicaciones informáticas exclusivamente a los repositorios móviles autorizados oficiales del sistema telefónico respectivo.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="testimonios" class="seccion-dinamica">
+    <div class="container">
+        <h2 class="section-title">Historias de la Comunidad</h2>
+
+        <div class="testimonios-grid">
+
+            <div class="test-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <img src="foto7.jpeg">
+                    <p>“Hice un pedido por internet y todo parecía normal, pero al momento de pagar el producto, el vendedor desapareció. Nunca recibí respuesta ni el producto.”</p>
+                    <br><b> América de la Rosa. 66 años – Fraude en compras en línea</b>
+                </div>
+
+            <div class="test-card">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <img src="foto8.jpeg">
+                <p>“Un cliente me mostró un capture de un Pago Móvil por una mercancía. Parecía real, pero el dinero nunca cayó en mi cuenta. Habían editado la foto.”</p>
+                <br>
+                <b>Luis Fernández. 52 años – Falso Pago Móvil</b>
+            </div>
+
+            <div class="test-card">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <img src="foto9.jpeg">
+                <p>“Vi un teléfono en oferta por Facebook y me citaron en un sitio solo. Al llegar, me di cuenta de que era una trampa para robarme. Por suerte logré irme.”</p>
+                <br>
+                <b> Julio Rojas. 42 años– Fraude en Marketplace</b>
+            </div>
+
+            <div class="test-card">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <img src="1000265244.jpg">
+                <p>“Recibí un enlace por WhatsApp que decía 'Bono de la Mujer'. Lo abrí, puse mis datos y perdí el acceso a mi Patria ese mismo día.”</p>
+                <br>
+                <b>Carmen H. 78 años – Phishing de Ayudas</b>
+            </div>
+
+            <div class="test-card">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <img src="foto10.jpeg">
+                <p>“Me llamaron diciendo que mi clave del banco había caducado. El señor sonaba muy profesional, pero cuando me pidió las coordenadas, supe que era una estafa.”</p>
+                <br>
+                <b>Audelina Palma. 64 años – Vishing Bancario</b>
+            </div>
+
+            <div class="test-card">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <img src="foto11.jpeg">
+                <p>“Me enviaron un código por SMS diciendo que era para una vacuna del covid. Se los di y a los dos minutos perdí mi WhatsApp. Empezaron a pedirle dinero a mis hijos.”</p>
+                <br>
+                <b>Isaura Berroteran. 81 años – Robo de WhatsApp</b>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer id="contacto">
+
+<img src="logo-uptos.gif" class="footer-logo-difuminado">
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<h3>Equipo Académico</h3>
+
+<ul class="team-list">
+
+<li>Valeria Llorens</li>
+<li>Raquel Moreno</li>
+<li>Juan Lobatón</li>
+
+</ul>
+
+<p style="margin-top:20px;">
+Universidad Politécnica Territorial del Oeste de Sucre
+“Clodosbaldo Russián”
+</p>
+
+<p>
+Trayecto 1 25-26
+</p>
+
+</div>
+
+<div style="text-align:right;">
+
+<h3>Atención Directa</h3>
+
+<p>
+¿Necesitas orientación sobre seguridad digital?
+</p>
+
+<a href="https://wa.me/584228534442?text=Hola,%20necesito%20asesoría%20sobre%20seguridad%20digital"
+class="btn-ws">
+
+<i class="fab fa-whatsapp"></i>
+
+WhatsApp Soporte
+
+</a>
+
+</div>
+
+</div>
+
+<hr style="margin-top:40px; opacity:.2;">
+
+<p style="text-align:center; margin-top:20px;">
+© 2025 Prevención Fraudes Chispero.
+</p>
+
+</div>
+
+</footer>
+
+<script>
+
+/* CARRUSEL */
+
+let currentSlide = 0;
+
+const slides = document.querySelectorAll('.slide');
+
+setInterval(() => {
+
+slides[currentSlide].classList.remove('active');
+
+currentSlide = (currentSlide + 1) % slides.length;
+
+slides[currentSlide].classList.add('active');
+
+},5000);
+
+/* MENU */
+
+function toggleMenu(){
+
+document.getElementById('navLinks').classList.toggle('active');
+
+}
+
+/* MOSTRAR SECCIONES MODIFICADO PARA VISTA INTEGRAL */
+
+function mostrarSeccion(id){
+
+const secciones = document.querySelectorAll('.seccion-dinamica');
+
+if (id === 'inicio_contenido') {
+    secciones.forEach(sec => {
+        sec.style.display = 'block';
+    });
+} else {
+    secciones.forEach(sec => {
+        sec.style.display = 'none';
+    });
+    document.getElementById(id).style.display = 'block';
+}
+
+window.scrollTo({
+    top:0,
+    behavior:'smooth'
+});
+
+document.getElementById('navLinks').classList.remove('active');
+
+}
+
+/* INICIO */
+
+window.onload = function(){
+
+mostrarSeccion('inicio_contenido');
+
+}
+
+</script>
+
+</body>
